@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .menu-item-select {
+        color: red !important;
+        background-color: black;
+        padding: 10px;
+        text-decoration: none;
+        font-weight: 800;
+      }
+
+      .menu-item-unselect {
+        color: white;
+      }
+
+      a:hover {
+        background-color: black;
+        padding: 10px;
+        text-decoration: none;
+        font-weight: 800;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        font-family: sans-serif;
+      }
+
+      h1 {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      style="background: grey; padding: 5px; color: white; border-radius: 4px"
+    >
+      <ul style="display: inline; padding: 10px; transition: background 0.4s">
+        <li style="display: inline; padding: 10px">
+          <a onclick="changePage(this)" href="#home">Home</a>
+        </li>
+        <li style="display: inline; padding: 10px">
+          <a onclick="changePage(this)" href="#servico">Serviços</a>
+        </li>
+        <li style="display: inline; padding: 10px">
+          <a onclick="changePage(this)" href="#contato">Contato</a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Bem-vindo</h1>
+    </main>
+  </body>
+
+  <script>
+    var main = document.querySelector('main');
+    let links = document.querySelectorAll('a');
+
+    changePage(links[0]);
+    function changePage(t) {
+      console.log('passei', t);
+      clearLink();
+      if (t.innerHTML === 'Home') {
+        console.log('home aqui');
+        main.innerHTML = '<h1>Estou na home</h1>';
+        main.innerHTML += '<p>Aqui você encontra diversos produtos</p>';
+        t.classList.add('menu-item-select');
+      } else if (t.innerHTML === 'Contato') {
+        console.log('contato aqui');
+        console.log('contato aqui');
+        t.classList.add('menu-item-select');
+        main.innerHTML = '<h1>Estou nos Contatos</h1>';
+        main.innerHTML += '<p>Entre em contato para mais informações</>';
+      } else {
+        console.log('serviços aqui');
+        main.innerHTML = '<h1>Estou nos Serviços</h1>';
+        main.innerHTML += '<p>Entre conhecer nossos serviços</>';
+        t.classList.add('menu-item-select');
+      }
+      console.log('terminei');
+    }
+
+    function clearLink() {
+      var links = document.querySelectorAll('a');
+      for (let a of links) {
+        a.classList.remove('menu-item-select');
+        a.classList.add('menu-item-unselect');
+      }
+    }
+  </script>
+</html>
